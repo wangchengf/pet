@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => 'rm-wz9nl3xmg295jv111.mysql.rds.aliyuncs.com',     //rm-wz9nl3xmg295jv111.mysql.rds.aliyuncs.com   //112.74.58.4
+    'hostname'        => '',     //   //112.74.58.4
     // 数据库名
     'database'        => 'vmp',
     // 用户名
-    'username'        => 'vmpweb',
+    'username'        => 'vmp',
     // 密码
-    'password'        => 'fygjuuOKcxMW',
+    'password'        => 'f',
     // 端口
     'hostport'        => '3306',
     // 连接dsn
