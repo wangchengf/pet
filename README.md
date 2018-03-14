@@ -1,4 +1,11 @@
-﻿ThinkPHP 5.0
+﻿我使用tp5.0搭建的宠物网站后台
+api模块是提供接口给app
+index模块是web前台
+admin模块是后台
+mobile是手机页面
+自定义了错误处理（application/lib/exception）和验证类(application/api/validate)
+
+ThinkPHP 5.0
 ===============
 [![Total Downloads](https://poser.pugx.org/topthink/think/downloads)](https://packagist.org/packages/topthink/think)
 [![Latest Stable Version](https://poser.pugx.org/topthink/think/v/stable)](https://packagist.org/packages/topthink/think)
