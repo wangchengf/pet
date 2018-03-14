@@ -1,0 +1,25 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: zdb
+ * Date: 2018/3/8
+ * Time: 11:14
+ */
+
+namespace app\api\controller\v1;
+
+
+use app\api\controller\BaseController;
+use app\api\model\Members;
+use think\Request;
+use app\api\validate\UidValidate;
+
+class User extends BaseController
+{
+    public function getUserInfo(Request $request){
+        (new UidValidate())->goCheck();
+        $uid = $request->only('uid');
+        $userInfo = Members::get($uid)->toArray();
+        return $userInfo;
+    }
+}

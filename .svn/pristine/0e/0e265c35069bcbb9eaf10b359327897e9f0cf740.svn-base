@@ -1,0 +1,147 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: pc
+ * Date: 2018/2/6
+ * Time: 10:38
+ */
+namespace app\weishilive\controller;
+use app\weishilive\weishiserver\ToWeishiServer;
+use think\Controller;
+use \think\Db;
+use \think\Request;
+
+
+class Getuserinfo extends Controller
+{
+    public function userinfo(){
+        //
+
+//      $weid = Request::instance()->get('weid');
+        $uid = '446';
+        $userInfo =
+            Db::table('ims_compere')
+                ->where(array('uid'=>$uid))
+                ->select();
+        var_dump($userInfo);
+        //动态
+
+        //文章
+
+        //导航栏
+
+        //1.0版本
+//        return $this->fetch();
+
+
+    }
+    public function getlivermsg(){
+        $code = Request::instance()->get('code');
+        if(!$code){
+            echo json_encode(array('errcode'=>'100','errmsg'=>'code is null'));exit;
+        }
+        $appid  = config('wechat')['appid'];
+        $secret = config('wechat')['appsecret'];
+        $url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.$appid.'&secret='.$secret.'&js_code='.$code.'&grant_type=authorization_code';
+        $tt = json_decode(request_post($url,''));
+        if(isset($tt->errcode)){
+           echo json_encode(array('errcode'=>$tt->errcode,'errmsg'=>$tt->errmsg));exit;
+        }
+        else{
+            $uid =
+                Db::table('ims_members')
+                    ->alias('m')
+                    ->join('ims_compere c','c.uid=m.uid')
+                    ->field(['c.uid','c.status','c.nickname','c.headimgurl','c.sex','c.comperename','m.city'])
+                    ->where(array('m.unionid'=>$tt->unionid))
+                    ->find();
+            if(empty($uid)){
+                echo json_encode(array('errcode'=>'100','errmsg'=>'未开通直播间'));exit;
+            }elseif($uid['status']!='已通过'){
+                echo json_encode(array('errcode'=>'100','errmsg'=>$uid['status']));exit;
+            }else{
+                $weid = Db::table('ims_compere')
+                    ->alias('c')
+                    ->join('ims_bncard b','c.uid=b.uid')
+                    ->field(['b.weid'])
+                    ->where(array('c.uid'=>$uid['uid']))
+                    ->find();
+//                $uid['mpurl']  = 'https://www.zhuoma360.com/v-'.$weid['weid'];   //线上名片地址
+                $uid['mpurl']='https://vmp.go-top.cn/v-'.$weid['weid'];     //测试环境名片地址
+                $ss= new ToWeishiServer();
+                $re = $ss->getzhubo($uid);
+                echo $re;exit;
+            }
+
+        }
+    }
+    //写个公共方法，判断是否过期，过期就刷新
+    public function refreshtoken($inputdata=array(),$method=''){
+        $token = Request::instance()->get('token');
+        $exp = explode('.',$token);
+        $expt = base64_decode($exp[1]);
+        $ret =  json_decode($expt);
+        if($ret->exp-time()<3000&&$ret->exp-time()>0){
+            $ss= new ToWeishiServer();
+            $re = $ss->refreshtoken($token);
+            echo $re ;
+        }else if($ret->exp-time()<0){
+
+            echo json_encode(array('ret'=>-1,'msg'=>'Expired token'));
+            //重新登陆
+
+        }else{
+            echo json_encode(array('ret'=>1,'msg'=>'this token is ok'));
+        }
+    }
+
+
+    //获取主播信息以及直播信息
+    public function getliveinfo(){
+        $inputdata = array();
+                $token = Request::instance()->get('token');
+//        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmc2NpZCI6IjQ2NTk5NyIsImlzcyI6Indza2oiLCJhdWQiOiJmc3hjeCIsImlhdCI6MTUxOTcxOTc4MiwibmJmIjoxNTE5NzE5NjgyLCJqdGkiOiJ3c2tqanRpIiwiZXhwIjoxNTE5NzI4NzgyfQ.XMYjeFRirsTZTBS5DPmTh2bCRdJbOm27BMg_36r5ppA';
+        $inputdata['token']=$token;
+        $ss= new ToWeishiServer();
+        $re = $ss->getliveinfo($inputdata);
+        echo $re;
+
+    }
+    //更新直播状态
+    public function updatelivestate(){
+        $inputdata = array();
+//        $token = Request::instance()->get('token');
+        $state = Request::instance()->get('state');
+        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmc2NpZCI6IjQ2NTk5NyIsImlzcyI6Indza2oiLCJhdWQiOiJmc3hjeCIsImlhdCI6MTUxOTYzMjQ5NCwibmJmIjoxNTE5NjMyMzk0LCJqdGkiOiJ3c2tqanRpIiwiZXhwIjoxNTE5NjQxNDk0fQ.fcJigFHlbMjm42O5tqSrU3vDTCcBKqgoQzJ12M24jAQ';
+        $inputdata['token']=$token;
+        $inputdata['state'] =$state;
+        echo $this->refreshtoken($inputdata,'updatelivestate');
+    }
+
+    //上传封面图片
+    public function uploadcover(){
+        $inputdata = array();
+        $token = Request::instance()->post('token');
+//        $file = Request::instance()->post('file');
+//        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmc2NpZCI6IjQ2NTk5NyIsImlzcyI6Indza2oiLCJhdWQiOiJmc3hjeCIsImlhdCI6MTUxOTY5OTY0MSwibmJmIjoxNTE5Njk5NTQxLCJqdGkiOiJ3c2tqanRpIiwiZXhwIjoxNTE5NzA4NjQxfQ.mUAlfqaUmdHKhFQ6IVaAdI_61EqdEVQZvIqJMXoQdqo';
+        $inputdata['token']=$token;
+        $inputdata['file'] =$_FILES;
+        echo $this->refreshtoken($inputdata,'uploadcover');
+    }
+        //更新直播间信息
+    public function updateliveinfo(){
+        $inputdata = array();
+        $token = Request::instance()->get('token');
+        $livename = Request::instance()->get('livename');
+        $livetime = Request::instance()->get('livetime');
+        $cover = Request::instance()->get('cover');
+        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmc2NpZCI6IjQ2NTk5NyIsImlzcyI6Indza2oiLCJhdWQiOiJmc3hjeCIsImlhdCI6MTUxOTYzMjQ5NCwibmJmIjoxNTE5NjMyMzk0LCJqdGkiOiJ3c2tqanRpIiwiZXhwIjoxNTE5NjQxNDk0fQ.fcJigFHlbMjm42O5tqSrU3vDTCcBKqgoQzJ12M24jAQ';
+        $inputdata['token']=$token;
+        $inputdata['livename'] =$livename;
+        $inputdata['livetime']=$livetime;
+        $inputdata['cover'] =$cover;
+        echo $this->refreshtoken($inputdata,'updateliveinfo');
+    }
+
+
+}

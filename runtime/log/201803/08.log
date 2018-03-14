@@ -1,0 +1,25 @@
+---------------------------------------------------------------
+[ 2018-03-08T17:53:43+08:00 ] 127.0.0.1 POST /api/v1.user/getBncardInfo
+[ info ] www.tp.com/api/v1.user/getBncardInfo [运行时间：0.196134s][吞吐率：5.10req/s] [内存消耗：2,499.81kb] [文件加载：40]
+[ error ] [1]Call to undefined function app\api\controller\v1\aa()[D:\wamp\www\zhibohuotai\application\api\controller\v1\User.php:28]
+[ error ] Call to undefined function app\api\controller\v1\aa()
+---------------------------------------------------------------
+[ 2018-03-08T17:55:13+08:00 ] 127.0.0.1 POST /api/v1.user/getBncardInfo
+[ info ] www.tp.com/api/v1.user/getBncardInfo [运行时间：0.211289s][吞吐率：4.73req/s] [内存消耗：2,499.82kb] [文件加载：40]
+[ error ] [1]Call to undefined function app\api\controller\v1\aa()[D:\wamp\www\zhibohuotai\application\api\controller\v1\User.php:28]
+[ error ] Call to undefined function app\api\controller\v1\aa()
+---------------------------------------------------------------
+[ 2018-03-08T17:55:31+08:00 ] 127.0.0.1 POST /api/v1.user/getBncardInfo
+[ info ] www.tp.com/api/v1.user/getBncardInfo [运行时间：0.197867s][吞吐率：5.05req/s] [内存消耗：2,499.82kb] [文件加载：40]
+[ error ] [1]Call to undefined function app\api\controller\v1\aa()[D:\wamp\www\zhibohuotai\application\api\controller\v1\User.php:28]
+[ error ] Call to undefined function app\api\controller\v1\aa()
+---------------------------------------------------------------
+[ 2018-03-08T17:57:48+08:00 ] 127.0.0.1 POST /api/v1.user/getBncardInfo
+[ info ] www.tp.com/api/v1.user/getBncardInfo [运行时间：0.195643s][吞吐率：5.11req/s] [内存消耗：2,499.82kb] [文件加载：40]
+[ error ] [1]Call to undefined function app\api\controller\v1\aa()[D:\wamp\www\zhibohuotai\application\api\controller\v1\User.php:28]
+[ error ] Call to undefined function app\api\controller\v1\aa()
+---------------------------------------------------------------
+[ 2018-03-08T17:58:18+08:00 ] 127.0.0.1 POST /api/v1.user/getBncardInfo
+[ info ] www.tp.com/api/v1.user/getBncardInfo [运行时间：0.205865s][吞吐率：4.86req/s] [内存消耗：2,499.82kb] [文件加载：40]
+[ error ] [1]Call to undefined function app\api\controller\v1\aa()[D:\wamp\www\zhibohuotai\application\api\controller\v1\User.php:28]
+[ error ] Call to undefined function app\api\controller\v1\aa()

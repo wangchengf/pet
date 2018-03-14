@@ -1,0 +1,52 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: zdb
+ * Date: 2018/2/5
+ * Time: 10:32
+ * 需要验证token的控制器需要继承此类
+ * 不需要验证token的控制器继承基类
+ */
+
+namespace app\api;
+
+
+use think\Controller;
+use think\Request;
+
+class ApiController extends Controller
+{
+    //初始化
+    public function _initialize(){
+        $request = Request::instance();
+        if(!$request->has('token')){
+            return false;
+        }
+        $token = $request->only('token');
+        if(empty($token)){
+            return false;
+        }
+        $tokens = explode('.',$token);
+        if(count($tokens) !== 3){
+            return false;
+        }
+        list($h,$p,$sign) = $tokens;
+        $header = json_decode(base64_decode($h),true);
+        if(empty($header['alg'])){
+            return false;
+        }
+        $alg = $header['alg'];
+        $key = config('wx.auth_secret');
+        $input = $h.'.'.$p;
+        if (hash_hmac($alg, $input, $key)!== $sign){
+            return false;
+        }
+        $payload = json_decode(base64_decode($p), JSON_OBJECT_AS_ARRAY);
+        $time = $_SERVER['REQUEST_TIME'];
+        if (isset($payload['iat']) && $payload['iat'] > $time)
+            return false;
+
+        if (isset($payload['exp']) && $payload['exp'] < $time)
+            return false;
+    }
+}

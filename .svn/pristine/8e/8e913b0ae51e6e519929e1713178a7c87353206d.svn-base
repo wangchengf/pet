@@ -1,0 +1,27 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: zdb
+ * Date: 2018/2/5
+ * Time: 10:30
+ */
+
+namespace app\api\controller;
+
+use app\api\ApiController;
+
+class Login extends ApiController
+{
+    public function index(){
+
+        return json([1,2,3]);
+
+
+    }
+
+    public function getuserinfo(){
+
+    }
+
+    //public function
+}

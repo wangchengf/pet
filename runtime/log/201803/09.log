@@ -1,0 +1,130 @@
+---------------------------------------------------------------
+[ 2018-03-09T09:44:17+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.111939s][吞吐率：8.93req/s] [内存消耗：4,326.66kb] [文件加载：43]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002784s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.009524s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.001109s ]
+---------------------------------------------------------------
+[ 2018-03-09T09:52:06+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.127258s][吞吐率：7.86req/s] [内存消耗：4,578.09kb] [文件加载：48]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000634s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.006727s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_bncard` [ RunTime:0.006638s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_bncard` WHERE  `uid` = 1 [ RunTime:0.001195s ]
+---------------------------------------------------------------
+[ 2018-03-09T09:55:57+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.121214s][吞吐率：8.25req/s] [内存消耗：4,524.56kb] [文件加载：47]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000723s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007108s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000881s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_bncard` [ RunTime:0.006249s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_bncard` WHERE  `uid` = 1 [ RunTime:0.000647s ]
+---------------------------------------------------------------
+[ 2018-03-09T09:56:14+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.127359s][吞吐率：7.85req/s] [内存消耗：4,578.09kb] [文件加载：48]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009789s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.006966s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_bncard` [ RunTime:0.006448s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_bncard` WHERE  `uid` = 1 [ RunTime:0.000592s ]
+---------------------------------------------------------------
+[ 2018-03-09T10:02:48+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.120123s][吞吐率：8.32req/s] [内存消耗：4,578.79kb] [文件加载：48]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000739s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007305s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_bncard` [ RunTime:0.006299s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_bncard` WHERE  `uid` = 1 [ RunTime:0.000818s ]
+---------------------------------------------------------------
+[ 2018-03-09T10:04:04+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.115893s][吞吐率：8.63req/s] [内存消耗：4,578.52kb] [文件加载：48]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000693s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007093s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_bncard` [ RunTime:0.006230s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_bncard` WHERE  `uid` = 1 [ RunTime:0.000617s ]
+---------------------------------------------------------------
+[ 2018-03-09T10:09:04+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.134561s][吞吐率：7.43req/s] [内存消耗：4,580.09kb] [文件加载：48]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000777s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007300s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_bncard` [ RunTime:0.006282s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_bncard` WHERE  `uid` = 1 [ RunTime:0.000614s ]
+---------------------------------------------------------------
+[ 2018-03-09T10:19:45+08:00 ] 127.0.0.1 POST /api/v1.index/add
+[ info ] www.tp.com/api/v1.index/add [运行时间：0.106239s][吞吐率：9.41req/s] [内存消耗：4,308.95kb] [文件加载：44]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000771s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.006808s ]
+[ sql ] [ SQL ] INSERT INTO `ims_members` (`username`) VALUES ('xx') [ RunTime:0.005146s ]
+---------------------------------------------------------------
+[ 2018-03-09T10:41:46+08:00 ] 127.0.0.1 POST /api/v1.index/update
+[ info ] www.tp.com/api/v1.index/update [运行时间：0.109428s][吞吐率：9.14req/s] [内存消耗：4,315.18kb] [文件加载：44]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000637s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007157s ]
+[ sql ] [ SQL ] UPDATE `ims_members`  SET `username`='ac'  WHERE  `username` = 'xx' [ RunTime:0.001177s ]
+---------------------------------------------------------------
+[ 2018-03-09T10:43:36+08:00 ] 127.0.0.1 POST /api/v1.index/del
+[ info ] www.tp.com/api/v1.index/del [运行时间：0.112609s][吞吐率：8.88req/s] [内存消耗：4,477.07kb] [文件加载：47]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000731s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.006649s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `username` = 'ac' LIMIT 1 [ RunTime:0.000799s ]
+[ sql ] [ SQL ] DELETE FROM `ims_members`    WHERE  `uid` = 3637303 [ RunTime:0.000622s ]
+---------------------------------------------------------------
+[ 2018-03-09T11:59:13+08:00 ] 127.0.0.1 GET /
+[ info ] www.tp.com/ [运行时间：0.085930s][吞吐率：11.64req/s] [内存消耗：1,910.00kb] [文件加载：29]
+[ info ] [ LANG ] D:\wamp\www\zhibohuotai\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.tp.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-03-09T16:35:37+08:00 ] 127.0.0.1 POST /api/v1.index/index
+[ info ] www.tp.com/api/v1.index/index [运行时间：0.149768s][吞吐率：6.68req/s] [内存消耗：4,586.26kb] [文件加载：48]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002009s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.009317s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.001241s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_bncard` [ RunTime:0.009226s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_bncard` WHERE  `uid` = 1 [ RunTime:0.000962s ]
+---------------------------------------------------------------
+[ 2018-03-09T16:43:31+08:00 ] 127.0.0.1 POST /api/v1.index/del
+[ info ] www.tp.com/api/v1.index/del [运行时间：0.128353s][吞吐率：7.79req/s] [内存消耗：4,378.77kb] [文件加载：47]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001091s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.011906s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `username` = 'ac' LIMIT 1 [ RunTime:0.000885s ]
+---------------------------------------------------------------
+[ 2018-03-09T16:50:14+08:00 ] 127.0.0.1 POST /api/v1.index/del
+[ info ] www.tp.com/api/v1.index/del [运行时间：0.114453s][吞吐率：8.74req/s] [内存消耗：4,378.77kb] [文件加载：47]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000817s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007642s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `username` = 'ac' LIMIT 1 [ RunTime:0.000610s ]
+---------------------------------------------------------------
+[ 2018-03-09T16:51:29+08:00 ] 127.0.0.1 POST /api/v1.index/del
+[ info ] www.tp.com/api/v1.index/del [运行时间：0.108134s][吞吐率：9.25req/s] [内存消耗：4,378.77kb] [文件加载：47]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000738s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007819s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `username` = 'ac' LIMIT 1 [ RunTime:0.000603s ]
+---------------------------------------------------------------
+[ 2018-03-09T16:52:15+08:00 ] 127.0.0.1 POST /api/v1.index/del
+[ info ] www.tp.com/api/v1.index/del [运行时间：0.110343s][吞吐率：9.06req/s] [内存消耗：4,378.60kb] [文件加载：47]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000658s ] mysql:host=127.0.0.1;port=3306;dbname=vmp_dev;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ims_members` [ RunTime:0.007226s ]
+[ sql ] [ SQL ] SELECT * FROM `ims_members` WHERE  `username` = 'ac' LIMIT 1 [ RunTime:0.000613s ]

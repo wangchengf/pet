@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+    <title>
+
+    </title>
+    <link rel="stylesheet" type="text/css" href="themes/mobile/industry/dist/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="themes/mobile/industry/dist/css/layout.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="themes/mobile/industry/dist/css/jquery.dad.css"> -->
+    <link rel="stylesheet" type="text/css" href="themes/mobile/industry/dist/css/LinkagePicker.css">
+    <script type="text/javascript" src="themes/mobile/industry/dist/js/font-size.js"></script>
+</head>
+<body>
+<div class="m-header">
+    <div class="m-bg-per">
+        <div class="header-icon-group pr">
+
+            <a href="wap.php?act=cardholder&do=scanTakes"><i class="icon-scan"></i></a>
+
+            <div class="music_box" id="music_box">
+                <i class="icon icon-music" id="music-img"></i>
+                <audio id="music" src="" loop=""></audio>
+            </div>
+
+            <!-- 	    	<p id="music_box">
+                            <i class="icon-music" class="m-music-edit" ></i>
+                        </p>
+                        <audio id="music" loop=""></audio> -->
+
+            <a href="/wap.php?act=cardholder&do=index">
+                <i class="icon-coll"></i>
+            </a>
+
+            <!--<i class="icon-coll m-collect" data-collect="{$isMyCollect}"></i>-->
+
+        </div>
+    </div>
+    <div class="m-info-list1 pr">
+        <div class="avatar-con pr">
+            <div class="avatar img-circle pr">
+                <input id="upload-avatar" class="img-circle pa" name="avatar_img" type="file">
+
+                <img class="img-circle" src="" alt="">
+
+            </div>
+            <div class="city-area f-txt-c pa">
+                <i class="icon i-area"></i>
+                <span >{$_W['account']['vmp']['city']}</span>
+            </div>
+        </div>
+        <div class="info">
+            <input class="info1-spe text-hidden" type="text" name="name" disabled placeholder="姓名" value="{$_W['account']['vmp']['realname']}">
+            <input class="info1 text-hidden" type="text" name="position" disabled placeholder="职位" value="{$_W['account']['vmp']['position']}">
+            <input class="info1 text-hidden" type="text" name="company" disabled placeholder="公司" value="{$_W['account']['vmp']['company']}">
+
+            <input class="info1 text-hidden" type="text" name="industry_name" disabled placeholder="行业标签" title="not_change_industry" value="{$_W['account']['vmp']['industry_name']}">
+
+            <input class="info1 text-hidden" type="text" name="industry_name" disabled placeholder="行业标签" title="change_industry" value="{$_W['account']['vmp']['industry_name']}">
+
+            <div class="verified-btn">
+                <a class="btn f-txt-c" href="{$_W['account']['role_url']}"><i class="i-member"></i>{$_W['account']['role']}</a>
+                <!--<a class="btn f-txt-c" href="javascript:;">实名认证</a>-->
+            </div>
+        </div>
+        <div class="m-icon-group">
+
+            <a class="m-edit pa" href="javascript:;">
+                <i class="icon i-edit"></i><span>编辑</span>
+            </a>
+
+            <a class="m-tel pa " href="Tel:{$_W['account']['vmp']['mobile']}">
+                <i class="icon i-tel"></i>
+            </a>
+
+            <a class="m-industry-logo pa" href="javascript:;">
+                <img src="{$_W['account']['vmp']['industry_logo']}" alt="">
+            </a>
+        </div>
+    </div>
+</div>
+<!-- 直播入口 -->
+<div class="m-live hidden">
+    <div class="live-content pr">
+        <div class="live-bg pa"></div>
+        <div class="live-status f-txt-c pa">直播中</div>
+        <p class="txt pa">长轴距C级运动轿车</p>
+    </div>
+    <div class="live-info">
+        <div class="avatar img-circle">
+            <img class="img-circle" src="" alt="">
+        </div>
+        <div class="info">
+            <h3 class="text-hidden">奔驰店铺</h3>
+            <div class="city-area f-txt-c pa">
+                <i class="icon i-area"></i>
+                <span>珠海</span>
+            </div>
+        </div>
+        <div class="sumNum">9351人在看</div>
+    </div>
+</div>
+<!-- 直播入口 end -->
+
+<!-- 查看名片状态 -->
+<div class="m-moving">
+    <!-- 动态状态1 只有图片-->
+    <a href="/wap.php?act=PersonalDynamics&mo=dongtai&do={if $MySelf}index{else}viewOthers&uid={$uid}{/if}">
+        <h3 class="title pr">
+            <span>{if $MySelf}我{else}Ta{/if}的动态</span>
+            {if $MySelf}{if $threadNum > 0}<sup class="red-dot img-circle pa">{/if}</sup>{/if}
+            <i class="icon-dir-right fr"></i>
+            {if $MySelf}
+            <div class="new-comment-num fr">
+                <i class="icon-msg"></i>
+                <span class="num">{$commentNum}条新评论</span>
+            </div>
+            {/if}
+        </h3>
+    </a>
+
+    <a class="moving-type1 pr clearfix" href="/wap.php?act=PersonalDynamics&mo=dongtai&do={if $MySelf}index{else}viewOthers&uid={$uid}{/if}">
+
+        <figure>
+            <img src="{$img['thumb_urlpath']}" alt="">
+        </figure>
+
+        <span class="dynamic-time pa">{$_W['account']['dongtai']['time']}</span>
+        {$img_count_str}
+    </a>
+
+
+    <!-- 动态状态2 图片加文字-->
+    <a class="moving-type2 pr clearfix" href="/wap.php?act=PersonalDynamics&mo=dongtai&do={if $MySelf}index{else}viewOthers&uid={$uid}{/if}">
+        <figure class="fl">
+            <img src="{$_W['account']['dongtai']['content']['img']}" alt="">
+        </figure>
+        <p class="fl">
+            {$_W['account']['dongtai']['content']['text']}
+        </p>
+        <span class="dynamic-time pa">{$_W['account']['dongtai']['time']}</span>
+        {$img_count_str}
+    </a>
+
+
+    <!-- 动态状态3  文字-->
+    <a class="moving-type3 pr clearfix" href="/wap.php?act=PersonalDynamics&mo=dongtai&do={if $MySelf}index{else}viewOthers&uid={$uid}{/if}">
+        <p class="text-hidden fl">{$_W['account']['dongtai']['content']}</p>
+        {if $_W['account']['dongtai']['status'] == 1}<span class="dynamic-time img-circle pa">{$_W['account']['dongtai']['time']}</span>{/if}
+    </a>
+
+</div>
+<!-- 查看名片状态 end-->
+
+<div class="m-user-info active5">
+    <div class="title pr">
+        <span>联系方式</span>
+
+        <i class="icon i-tips fr"></i>
+        <div class="mask-tips hidden">
+            <div class="content">
+                是否让大家都看到你的联系方式
+            </div>
+        </div>
+        <div class="checkbox checkboxType2 fr">
+            <input type="checkbox" name="isredbag" autocomplete="off" data-num="{$_W['account']['vmp']['contacts_protect']}">
+            <label><em class="txt"></em></label>
+        </div>
+
+    </div>
+    <ul>
+        <li>
+            <i class="icon i-mobile"></i>
+            <p>
+                <span class="m-info-edit" name="mobile" placeholder="手机号码" contenteditable="true">{$_W['account']['vmp']['mobile']}</span>
+                <a class="m-action-link" href=""></a>
+            </p>
+        </li>
+        <li>
+            <i class="icon i-email"></i>
+            <p>
+                <span class="m-info-edit" name="email" placeholder="邮箱" contenteditable="true">{$_W['account']['vmp']['email']}</span>
+                <a class="m-action-link" href="javascript:;"></a>
+            </p>
+        </li>
+        <li>
+            <i class="icon i-wxnum"></i>
+            <p>
+                <span class="m-info-edit" name="wxnum" placeholder="微信号" contenteditable="true">{$_W['account']['vmp']['wxnum']}</span>
+                <a class="m-action-link" href="javascript:;"></a>
+            </p>
+        </li>
+        <li>
+            <i class="icon i-qq"></i>
+            <p>
+                <span class="m-info-edit" name="qq" placeholder="QQ号" contenteditable="true">{$_W['account']['vmp']['qq']}</span>
+                <a class="m-action-link" href="javascript:;"></a>
+            </p>
+        </li>
+        <li>
+            <i class="icon i-site"></i>
+            <p>
+                <span class="m-info-edit" name="site" placeholder="网址" contenteditable="true">{$_W['account']['vmp']['site']}</span>
+                <a class="m-action-link" href="javascript:;"></a>
+            </p>
+        </li>
+        <li>
+            <i class="icon i-address"></i>
+            <p>
+                <span class="m-info-edit m-address" name="address" placeholder="单位地址" contenteditable="true">{$_W['account']['vmp']['address']}</span>
+                <a class="m-action-link" href="javascript:;"></a>
+            </p>
+        </li>
+    </ul>
+    <!-- 编辑状态-地图 -->
+    <div class="m-newmap" id='allmaps'></div>
+    <!-- 是否显示地图 -->
+    <div class="m-show-newmap">
+        <div class="fr">
+            <span class="">显示地图</span>
+            <div class="checkbox checkboxType1">
+                <input type="checkbox" name="isMap" autocomplete="off" data-num="{$_W['account'][vmp]['show_map']}" >
+                <label><em class="txt"></em></label>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 文章块 -->
+<div class="m-article">
+    <div class="m-section-article">
+        <!-- 		<div class="m-section" data-queue="2" id="">
+                    <div class="header-title pr">
+                        <div class="m-section-dele img-circle pa">
+                            <div class="dele-area img-circle">
+                                <i class="icon icon-delete img-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="upload-logo pr">
+                        <input id="company_logo" class="pa" name="company_logo" type="file">
+                        <p class="txt f-txt-c pa">请上传公司LOGO</p>
+                        <img src="{$_W['account']['vmp']['company_logo']}" name="logo" alt="">
+                    </div>
+                </div> -->
+
+        <div class="m-section" id="{$ac['id']}">
+            <!--  -->
+            <div class="header-title pr">
+                <h3 class="title">
+                    <input type="text" disabled placeholder="文章标题" value="{$ac['title']}">
+                </h3>
+                <h4 class="subtitle">
+                    <input type="text" disabled placeholder="副标题" value="{$ac['description']}">
+                </h4>
+                <!-- 编辑状态 -->
+                <div class="m-section-dele img-circle pa">
+                    <div class="dele-area img-circle">
+                        <i class="icon icon-delete img-circle"></i>
+                    </div>
+                </div>
+                <!-- 				<div class="m-section-exchange img-circle pa draggable dad-draggable-area">
+                                    <i class="icon icon-exchange"></i>
+                                </div> -->
+            </div>
+            <!--  -->
+            <div class="m-show-title">
+                <p class="title">{$ac['title']}</p>
+                <p class="subtitle">{$ac['description']}</p>
+            </div>
+
+            <div class="middle-con pr" placeholder="请输入">
+
+
+            </div>
+
+            <div class="editor-controller pr">
+                <ul>
+                    <li class="editor-boldText" data-bold="bold">
+                        <i class="icon i-boldText"></i>
+                    </li>
+                    <li class="editor-colorText">
+                        <i class="icon i-colorText"></i>
+                    </li>
+                    <li class="editor-centerText" data-align="center">
+                        <i class="icon i-centerText"></i>
+                    </li>
+                    <li class="editor-insertImage pr">
+                        <i class="icon i-insertImage"></i>
+                    </li>
+                    <li class="editor-insertLink">
+                        <i class="icon i-insertLink"></i>
+                    </li>
+                    <li class="editor-insertVideo">
+                        <i class="icon i-insertVideo"></i>
+                    </li>
+                </ul>
+                <div class="color-group pa hidden">
+                    <div data-color="#333333">
+                        <span class="color1"></span>
+                    </div>
+                    <div data-color="#ff3333">
+                        <span class="color2"></span>
+                    </div>
+                    <div data-color="#338eff">
+                        <span class="color3"></span>
+                    </div>
+                    <div data-color="#ff7329">
+                        <span class="color4"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- 添加文章 -->
+    <div class="m-section-edit f-txt-c">
+        <div class="add_article ">
+            <i class="icon i-section-add"></i>
+            <span>添加自定义块</span>
+        </div>
+    </div>
+</div>
+
+<!-- 中间导航 -->
+<div class="m-popularize">
+    <div class="m-popularize-list1 f-txt-c">
+
+        <a href="" class="nav-item" name=>
+            <p class="text-hidden"></p>
+            <div class="m-nav-delete img-circle">
+                <i class="icon icon-delete"></i>
+            </div>
+            <div class="outer-mask pa"></div>
+        </a>
+
+        <a href="javascript:;" class="add-item add-nav">
+            <i class="icon i-nav-add"></i>
+        </a>
+    </div>
+</div>
+<!-- 留言板 自己也可以看到-->
+
+
+<div class="m-messboard">
+    <from class="m-messboard-block">
+        <div class="header-title">
+            <h3 class="title">
+                <input type="text" disabled placeholder="文章标题" value="留言板">
+            </h3>
+            <h4 class="subtitle">
+                <input type="text" disabled placeholder="副标题" value="message board">
+            </h4>
+        </div>
+        <div class="input-con f-txt-c">
+            <input type="text" name="msg_name" placeholder="请输入姓名" value="{$userinfo['realname']}">
+            <input type="text" name="msg_tel" placeholder="请输入联系电话" value="{$userinfo['mobile']}">
+            <textarea name="msg_txt" placeholder="请输入您的留言"></textarea>
+        </div>
+        <div class="submit-btn f-txt-c">
+            <a class="btn" href="javascript:;">提交</a>
+        </div>
+    </from>
+</div>
+
+
+
+<!-- 地图 -->
+<div class="m-map pr">
+    <div id="allmap"></div>
+    <a class="m-navigation f-txt-c pa" href="javascript:;">导航</a>
+</div>
+
+
+<!-- 设置 -->
+<div class="m-setting">
+    <div class="setting-con">
+        <div class="setting-item pr">
+            <i class="icon i-scan fl"></i>
+            <span class="fl">微信二维码</span>
+            <input id="upload_qrcode" type="file" name="qrcode_wx">
+            <div class="upload-input fr">
+                <i class="icon icon-dir-left fr"></i>
+                <img class="qrCore fr" src="{$_W['account']['vmp']['qrcode_wx']}" alt="">
+            </div>
+        </div>
+        <div class="setting-item">
+            <i class="icon i-mess"></i>
+            <span>留言板</span>
+            <div class="checkbox checkboxType1 fr">
+                <input type="checkbox" name="isMsg" autocomplete="off" data-num="{$_W['account']['vmp']['message_borad']}">
+                <label><em class="txt"></em></label>
+            </div>
+        </div>
+        <div class="setting-item g-song-show">
+            <i class="icon i-music"></i>
+            <span>背景音乐</span>
+            <i class="icon icon-dir-left fr"></i>
+        </div>
+        <div class="m-song">
+            <div class="current-song-info">
+                <div class="m-song-icon fl">
+                    <i class="icon i-song"></i>
+                </div>
+                <div class="song-name fl">
+                    <h4>当前音乐</h4>
+                    <p>{if $styles['music_title']['content']}{$styles['music_title']['content']}{else}未选择{/if}</p>
+                </div>
+                <div class="m-play-music fr">
+                    <i class="icon i-paly" music="{if $styles['music']['content']}{$styles['music']['content']}{/if}"></i>
+                    <audio src="{$styles['music']['content']}" id="select_audio"></audio>
+                </div>
+            </div>
+            <div class="current-song-show">
+                <span>背景音乐是否开启</span>
+                <div class="checkbox ischeckedMusic fr">
+                    <input id="isdelMusic" type="checkbox"  autocomplete="off" data-num="{$styles['music_isnoplay']['content']}"  />
+                    <label><em class="txt"></em></label>
+                </div>
+            </div>
+            <div class="song-list">
+                <ul class="tab f-txt-c clearfix">
+                    <li class="active7">
+                        <span>站内音乐</span>
+                    </li>
+                    <li>
+                        <span>我的音乐</span>
+                    </li>
+                </ul>
+                <div class="song-item clearfix">
+                    <ul>
+
+                        <li>
+                            <div class="song-select fl" id="{$imusic['id']}">
+                                <i class="fl"></i>
+                                <p class="fl" title="{$imusic['music_url']}">{$imusic['name']}</p>
+                            </div>
+                            <div class="m-listen fr hidden">
+                                <i class="icon i-listen"></i>
+                                <audio src=""></audio>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="song-item clearfix">
+
+                    <p class="no-song f-txt-c">请到pc后台上传我的音乐</p>
+
+                    <ul>
+
+                        <li>
+                            <div class="song-select fl" id="{$mmusic['id']}">
+                                <i class="fl"></i>
+                                <p class="fl" title="{$mmusic['music_url']}">{$mmusic['name']}</p>
+                            </div>
+                            <div class="m-listen fr">
+                                <i class="icon i-listen"></i>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="song-btn-group f-txt-c">
+                <a class="btn musci_close" href="javascript:;">取消</a>
+                <a class="btn musci_keep" href="javascript:;">保存</a>
+            </div>
+        </div>
+        <div class="setting-item g-share-show">
+            <i class="icon i-share-setting"></i>
+            <span>分享设置</span>
+            <i class="icon icon-dir-left fr"></i>
+        </div>
+        <div class="m-share">
+            <div class="share-title pr">
+                <input placeholder="分享标题" type="text" name="shareTitle" value="{$reply['title']}">
+                <div class="m-txt-emptied img-circle pa">
+                    <i class="icon icon-delete"></i>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="share-content fl pr">
+                    <textarea placeholder="分享内容描述" name="shareContent">{$reply['description']}</textarea>
+                    <div class="m-txt-emptied img-circle pa">
+                        <i class="icon icon-delete"></i>
+                    </div>
+                </div>
+                <div class="share-file-photo fr pr">
+                    <input id="upload_shareimg" class="pa" type="file" name="imgFile">
+                    <img class="" src="{$reply['thumb']}" alt="">
+                    <p class="pa">图片上传</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="flexible-height" style="margin-bottom: 3.5rem;"></div>
+
+<!-- 编辑状态 保存修改-->
+<div class="global-btn-group save_changes f-txt-c pfixed">
+    <a class="cancel" href="javascript:;">取消</a>
+    <a class="save" href="javascript:;">保存</a>
+</div>
+<!-- 编辑状态 保存修改 end-->
+
+<!-- 浏览自己名片状态 -->
+
+<div class="global-btn-group sendcard_qrcode f-txt-c pfixed">
+    <a class="btn-send" href="javascript:;">发名片</a>
+    <a class="btn-qrcode" href="javascript:;">我的二维码</a>
+</div>
+<!-- 浏览自己名片状态 end-->
+
+<!-- 访客状态 -->
+<div class="global-btn-group sendMsg_importContacts f-txt-c pfixed">
+    <a class="btn-send" href="wap.php?act=sale&mo=chat&do=index&accept_weid={$weid}">发消息</a>
+
+    <a class="btn-importContacts" href="wap.php?act=sale&mo=register&do=follow&weid={$weid}">注册</a>
+
+    <a class="btn-importContacts" href="/mobile.php?act=module&name=vmp&do=vcf&weid={$weid}">导入通讯录</a>
+
+</div>
+<!-- 访客状态 end-->
+
+
+<!-- 发名片小页面 -->
+<div class="m-send-card pfixed hidden">
+    <div class="share-lead">
+        <i class="lead-pic"></i>
+    </div>
+    <h3 class="f-txt-c">点击这里可以分享至微信、QQ哦！</h3>
+    <div class="content pr">
+        <div class="header-pic pa"></div>
+        <div class="txt">
+            <p>您好！我是<span>{$_W['account']['vmp']['realname']}</span>！很高兴大家能够看到我的名片，它的出现让我们沟通变得更加便捷！<span class="locationUrl"></span>
+            </p>
+        </div>
+        <div class="del-page pa">
+            <i class="icon-delete"></i>
+        </div>
+    </div>
+    <div class="btn-group f-txt-c clearfix">
+        <!-- 		<a class="btn copy" href="javascript:;">一键复制</a>
+                <a class="btn send-msg" href="">发送到短信</a> -->
+        <button class="btn copy" id="copyCode" data-clipboard-target="#contentcopy" data-clipboard-action="copy">一键复制</button>
+        <a class="btn send-msg">发送到短信</a>
+    </div>
+    <p class="dire-txt f-txt-c">一键复制到手机粘贴板，分享给更多朋友</p>
+    <input id="contentcopy" style="opacity:0;" type="text">
+
+    <!-- <textarea id="coay_text" style="opacity:0;"></textarea> -->
+</div>
+
+<!-- 行业选择 -->
+<div id="targetContainer"></div>
+<!-- 行业选择 end -->
+
+<!-- 底部导航 -->
+<footer class="m-footer f-txt-c">
+    <ul class="m-menu">
+        <li>
+            <a class="active" href="/v-{$weid}">
+                <i class="icon icon-card"></i>
+                <p>名片首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="/wap.php?act=visitor&mo=MsgCenter&do=message" class="pr">
+                <i class="icon icon-mess"></i>
+                <p>
+                    消息
+                </p>
+                <div class="msgDot pa"></div>
+            </a>
+        </li>
+        <li>
+            <a href="/wap.php?act=cardholder&do=mailList">
+                <i class="icon icon-Address-Book"></i>
+                <p>通讯录</p>
+            </a>
+        </li>
+        <li>
+            <a href="/commerce/search/index.html">
+                <i class="icon icon-contacts"></i>
+                <p>人脉搜索</p>
+            </a>
+        </li>
+        <li class="active">
+            <a href="/wap.php?act=auth&do=index">
+                <i class="icon icon-my"></i>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</footer>
+<!-- 返回顶部 -->
+<div id="goTotop" class="pfixed img-circle f-txt-c">
+    <i class="icon-gotop"></i>
+    <p>顶部</p>
+</div>
+<div class="m-popup mask-save-edit hidden">
+    <h3 class="f-txt-c">是否保存修改？</h3>
+    <div class="bth-group f-txt-c">
+        <a class="save" href="javascript:;">保存</a>
+        <a class="cancel" href="javascript:;">取消</a>
+    </div>
+</div>
+<!-- 删除询问框 -->
+<div class="m-popup mask-delete section-delete hidden">
+    <h3 class="f-txt-c">是否要删除该文章</h3>
+    <div class="bth-group f-txt-c">
+        <a class="save" href="javascript:;">确定</a>
+        <a class="cancel" href="javascript:;">取消</a>
+    </div>
+</div>
+<div class="m-popup mask-delete nav-delete hidden">
+    <h3 class="f-txt-c">是否要删除该按钮</h3>
+    <div class="bth-group f-txt-c">
+        <a class="save" href="javascript:;">确定</a>
+        <a class="cancel" href="javascript:;">取消</a>
+    </div>
+</div>
+<!-- 添加导航栏目 -->
+<div class="m-popup mask-add-nav hidden">
+    <div class="content">
+        <h3>添加导航栏目</h3>
+        <div class="add-mess pr">
+            <input class="nav_name_text" name="nav_name_text" type="text" placeholder="请输入名称">
+            <ul class="nav-list pa hidden">
+                <li order="1">名片管理</li>
+                <li order="2">节日贺卡</li>
+                <li order="3">一键拨号</li>
+                <li order="4">一键导航</li>
+                <li order="5">QQ交谈</li>
+                <li order="6">导入通信录</li>
+                <!-- <li order="7">名片二维码</li> -->
+                <li order="8">我想要</li>
+                <li order="9">我分享</li>
+                <li order="10">我的商城</li>
+                <li order="11">即时对聊</li>
+            </ul>
+            <div class="m-nav-url hidden" id="nav_list_val">
+                <input order="1" value="{$_W['siteroot']}wap.php?act=auth&do=index&weid=" />
+                <input order="2" value="{$_W['siteroot']}wap.php?act=heka&do=moreCardList&eid=387&weid=" />
+                <input order="3" value="tel:" />
+                <input order="4" {if $_W[ 'account'][ 'vmp'][ 'address']}value="https://api.map.baidu.com/marker?location={if $_W['account']['vmp']['lat']}{$_W['account']['vmp']['lat']}{else}22.291184{/if},{if $_W['account']['vmp']['lng']}{$_W['account']['vmp']['lng']}{else}113.579638{/if}&title={$_W['account']['vmp']['address']}&name={$_W['account']['vmp']['address']}&content={$_W['account']['vmp']['address']}&output=html&src=zchq"
+                {else}placeholder="请完善您的地址信息后再使用该按钮!" {/if} />
+                <input order="5"  />
+                <input order="6" value="{$_W['siteroot']}mobile.php?act=module&name=vmp&do=vcf&weid=" />
+                <!-- <input order="7" value="#:qrcode" /> -->
+                <input order="8" value="{$_W['siteroot']}wap.php?act=sale&mo=register&do=follow&weid=" />
+                <input order="9" value="{$_W['siteroot']}wap.php?act=sale&mo=register&do=recommend&weid=" />
+                <input order="10" value="{$_W['siteroot']}wap.php?act=vstore&mo=signin&do=index&weid=" />
+                <input order="11" value="{$_W['siteroot']}wap.php?act=sale&mo=chat&do=index&accept_weid=" />
+            </div>
+        </div>
+        <textarea class="nav_url_text" name="nav_url_text" placeholder="请输入或粘贴网址"></textarea>
+    </div>
+    <div class="bth-group f-txt-c">
+        <a class="save" href="javascript:;">确定</a>
+        <a class="cancel" href="javascript:;">取消</a>
+    </div>
+</div>
+<!-- 添加视频 -->
+<div class="m-popup mask-add-video hidden">
+    <div class="content">
+        <h3 class="">添加视频</h3>
+        <textarea placeholder="视频地址"></textarea>
+    </div>
+    <div class="bth-group f-txt-c">
+        <a class="save" href="javascript:;">确定</a>
+        <a class="cancel" href="javascript:;">取消</a>
+    </div>
+</div>
+
+<!-- 添加图片 -->
+<div class="m-popup mask-add-image hidden">
+    <div class="content">
+        <h3 class="">添加图片</h3>
+        <div class="upload-img pr">
+            <input class="pa" type="file" name="ac_pic" id='upload_ac_img' >
+            <!--<input class="pa" name="popup_add_img" type="file">-->
+            <img src="" alt="">
+            <p class="pa">上传本地图片</p>
+        </div>
+        <!-- <textarea placeholder="请粘贴外链图片地址"></textarea> -->
+    </div>
+    <div class="bth-group f-txt-c">
+        <a class="save" href="javascript:;">确定</a>
+        <a class="cancel" href="javascript:;">取消</a>
+    </div>
+</div>
+
+<!-- 添加链接 -->
+<div class="m-popup mask-add-link hidden">
+    <div class="content">
+        <h3 class="">添加链接</h3>
+        <div class="add-mess">
+            <input type="text" placeholder="请输入名称">
+        </div>
+        <textarea placeholder="请粘贴外链图片地址"></textarea>
+    </div>
+    <div class="bth-group f-txt-c">
+        <a class="save" href="javascript:;">确定</a>
+        <a class="cancel" href="javascript:;">取消</a>
+    </div>
+</div>
+
+<!--qrcode -->
+
+<input class="hidden" type="file" name="qrcode_wx" accept="image/jpeg,image/jpg,image/png,image/gif">
+
+<div class="m-popup mask-qrcore pr hidden">
+    <h3 class="qrcode_desc f-txt-c">扫描二维码，打开我的名片</h3>
+    <ul class="qrcore-group">
+        <li class="spinner" style="display: none;">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+        </li>
+        <li class="qrcore-li-wx">
+            <img id="qrcode_img" src="{$_W['account']['vmp']['qrcode']}" alt="">
+        </li>
+    </ul>
+    <div class="tab btn-group" id="qrcode_tabs">
+        <a class="f-txt-c active">名片二维码</a>
+        <a class="f-txt-c m-weixin-upload">微信二维码</a>
+    </div>
+    <i class="mask-cancel pa"></i>
+</div>
+<!--各类二维码 -->
+<input type="hidden" value="" id="W_weid">
+<input type="hidden" value="{$_W['account']['vmp']['realname']}" id="real_name">
+<input type="hidden" value="./themes/web/fengsu/img/public_qrcode.jpg" id="public_qrcode">
+<input type="hidden" value="{$_W['account']['vmp']['qrcode_wx']}" id="person_qrcode">
+<input type="hidden" value="{$_W['account']['vmp']['recommend_qrcode']}" id="recommend_qrcode">
+<input type="hidden" value="{$_W['account']['vmp']['qrcode']}" id="vmp_qrcode">
+<!--qrcode end -->
+
+<script type="text/javascript" src="themes/mobile/industry/dist/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="themes/mobile/industry/dist/layer/layer.min.js"></script>
+<!-- 拖拽 -->
+<!-- <script type="text/javascript" src="themes/mobile/industry/dist/js/jquery.dad.min.js"></script> -->
+<!-- 剪贴板 -->
+<script type="text/javascript" src="themes/mobile/industry/dist/js/clipboard.js"></script>
+
+<script type="text/javascript" src="themes/mobile/industry/dist/js/LinkagePicker.js"></script>
+<script type="text/javascript" src="themes/mobile/industry/dist/js/layout.js"></script>
+<script type="text/javascript" src="themes/mobile/industry/dist/js/edit.js"></script>
+
+<!-- <script type="text/javascript" src="resource/script/musicPlay-2.0.min.js"></script> -->
+<script type="text/javascript" src="themes/mobile/industry/dist/js/no-edit.js"></script>
+<script src="themes/mobile/default/dist/js/qrcode.js"></script>
+
+<script type="text/javascript" src="themes/mobile/industry/dist/js/fixed.min.js"></script>
+<!-- 百度地图引入 -->
+<script src="https://api.map.baidu.com/api?v=2.0&ak=1u9ByQTvmXY594On02vHsj4B5oOK4MU2" charset="utf-8"></script>
+<script src="themes/mobile/industry/dist/js/map.min.js" charset="utf-8"></script>
+<!-- dl -->
+<script>$.ajaxSetup({cache:true,beforeSend:function(a,d){var b=$("meta[http-equiv='X-LOGIN-ID']").eq(0)[0];var c=$("meta[http-equiv='X-LOGIN-TOKEN']").eq(0)[0];if(c&&c.content&&b&&b.content){a.setRequestHeader("X-LOGIN-ID",b.content);a.setRequestHeader("X-LOGIN-TOKEN",c.content)}},complete:function(b,a){if(a=="error"){c(b,b.status)}function c(e,f){switch(f){case 401:location.href="/wap.php?act=auth&do=loginIndex&backUrl="+encodeURIComponent(location.href);break;case 404:alert("接口不存在");break;case 500:alert("服务器内部错误");break;case 503:alert("缺少请求参数:"+(e.responseJSON.msg?e.responseJSON.msg:""));break;case 409:break;case 301:case 302:var d=e.getResponseHeader("Location");if(!d){d=e.getResponseHeader("location")}if("string"==typeof d){d=d.replace(" ","");if(d.indexOf("?")!=-1){location.href=d+"&backUrl="+encodeURIComponent(location.href)}else{location.href=d+"?backUrl="+encodeURIComponent(location.href)}}break}}}});</script>
+
+
+<!--wxshare begin-->
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    wx.config({
+        appId: '',
+        timestamp: parseInt(''),
+        nonceStr: '',
+        signature: '',
+        jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'showAllNonBaseMenuItem']
+    });
+    wx.ready(function() {
+        var result = {};
+        result.title = "";
+        result.desc = '';
+        result.link = '';
+        result.imgUrl = "";
+        result.success = function() {
+            var $url = "wap.php?act=stat&mo=VisitStat&do=Share";
+            $.post($url, {
+                weid: ""
+            });
+        };
+        wx.showAllNonBaseMenuItem();
+        wx.onMenuShareAppMessage(result);
+        wx.onMenuShareTimeline(result);
+        wx.onMenuShareQQ(result);
+        wx.onMenuShareWeibo(result);
+    });
+    wx.error(function(res) {
+        console.log(res.errMsg);
+    });
+</script>
+
+<!--wxshare end-->
+<!--music star-->
+
+<script type="text/javascript" src="./resource/script/musicPlay-2.0.min.js"></script>
+<script>
+    var musicBox = document.querySelector('.music_box'), musicAudio;
+    musicBox && (musicAudio = new MusicPlay('.music_box'));
+    $(function(){
+        window.setTimeout(function(){
+            createbjMusic("");
+        },3000);
+    });
+    function createbjMusic(e) {
+        $(".music_box").show();
+        $("#music").attr("src", e);
+        if( undefined == window.localStorage || (window.localStorage && ! window.localStorage.getItem('audio_pause')) ){
+            isPaused = false;
+            musicAudio.play();
+            _musicPlay();
+        }else{
+            isPaused = true;
+            musicAudio.pause();
+            _musicPaused(); // 关闭
+        }
+    }
+
+</script>
+
+<!--music end-->
+</body>
+</html>
+
